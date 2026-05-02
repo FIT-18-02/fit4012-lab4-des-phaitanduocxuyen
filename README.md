@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/B72A5Yyp)
 # FIT4012 - Lab 4: DES / TripleDES Starter Repository
 
-Repo này là **starter repo** cho Lab 4 của FIT4012.  
+Repo này là **starter repo** cho Lab 4 của FIT4012.
 
 ## 1. Cấu trúc repo
 
@@ -57,53 +57,53 @@ cmake --build build
 
 ## 3. Input / Đầu vào
 
-TODO_STUDENT: Mô tả rõ đầu vào của chương trình sau khi em hoàn thiện bài lab.
+- Chế độ (Mode): Nhập một số nguyên từ 1 đến 4 để chọn thuật toán (DES Enc/Dec, TripleDES Enc/Dec).
 
-Gợi ý nên nêu:
-- plaintext đang được nhập như thế nào
-- key đang được nhập như thế nào
-- chương trình nhận 1 block hay nhiều block
-- định dạng dữ liệu là chuỗi bit, chuỗi ký tự hay file
+- Dữ liệu (Plaintext/Ciphertext): Nhập dưới dạng chuỗi bit nhị phân (chỉ gồm ký tự '0' và '1').
+
+- Khóa (Key): Nhập chuỗi bit nhị phân 64-bit (cho DES) hoặc ba chuỗi 64-bit (cho TripleDES).
+
+- Số lượng block: Chương trình hỗ trợ nhập chuỗi có độ dài bất kỳ (multi-block).
+
 
 ## 4. Output / Đầu ra
 
-TODO_STUDENT: Mô tả rõ đầu ra của chương trình.
+- Kết quả cuối cùng: Một chuỗi nhị phân dài duy nhất đại diện cho kết quả mã hóa hoặc giải mã.
 
-Gợi ý nên nêu:
-- ciphertext hiển thị ra sao
-- có in round keys hay không
-- có hỗ trợ giải mã hay không
-- với TripleDES thì đầu ra gồm những gì
+- Thông tin bổ sung: Chương trình in ra các khóa vòng (Round Keys) trong quá trình xử lý để hỗ trợ việc kiểm chứng từng bước của thuật toán.
+
+- TripleDES: Đầu ra là kết quả của quy trình mã hóa/giải mã Triple-DES theo mô hình EDE (Encrypt-Decrypt-Encrypt).
 
 ## 5. Padding đang dùng
 
-TODO_STUDENT: Giải thích cơ chế padding em dùng.
+Chương trình sử dụng cơ chế Zero Padding:
 
-Gợi ý:
-- nếu plaintext dài hơn 64 bit thì chia block như thế nào
-- nếu thiếu bit thì pad bằng `0` ra sao
-- hạn chế của zero padding là gì
-- vì sao cách này chỉ phù hợp cho bài học nhập môn, không phải thiết kế an toàn hoàn chỉnh trong thực tế
+- Cơ chế: Nếu độ dài của chuỗi đầu vào không chia hết cho 64 bit, chương trình sẽ tự động thêm các ký tự '0' vào cuối block cuối cùng cho đến khi đủ 64 bit.
+
+- Chia block: Sau khi padding, toàn bộ chuỗi được chia thành các khối 64-bit độc lập để xử lý tuần tự.
+
+- Hạn chế: Zero Padding có thể gây nhầm lẫn nếu dữ liệu gốc ban đầu kết thúc bằng các bit 0. Đây là cơ chế đơn giản phục vụ mục đích học tập, không an toàn bằng các chuẩn như PKCS#7 trong thực tế.
 
 ## 6. Tests bắt buộc
 
-Repo này đã tạo sẵn **5 tên file test mẫu** để sinh viên điền nội dung:
+- test_des_sample.sh: Kiểm tra với vector thử chuẩn.
 
-- `tests/test_des_sample.sh`
-- `tests/test_encrypt_decrypt_roundtrip.sh`
-- `tests/test_multiblock_padding.sh`
-- `tests/test_tamper_negative.sh`
-- `tests/test_wrong_key_negative.sh`
+- test_encrypt_decrypt_roundtrip.sh: Kiểm tra khả năng mã hóa rồi giải mã ngược lại.
 
-Sinh viên phải tự hoàn thiện test và bổ sung minh chứng chạy.
+- test_multiblock_padding.sh: Kiểm tra dữ liệu dài và cơ chế bù bit 0.
+
+- test_tamper_negative.sh: Kiểm tra khi ciphertext bị thay đổi.
+
+- test_wrong_key_negative.sh: Kiểm tra khi dùng sai khóa để giải mã.
+
 
 ## 7. Logs / Minh chứng
 
-Thư mục `logs/` dùng để nộp minh chứng, ví dụ:
-- ảnh chụp màn hình khi chạy chương trình
-- output của test
-- log thử đúng / sai key / tamper
-- log cho mã hóa nhiều block
+Các tệp trong thư mục logs/ chứa:
+
+- run_log.txt: Nhật ký chạy thử chương trình với các bộ dữ liệu khác nhau.
+
+- Ảnh chụp màn hình kết quả chạy trên terminal thành công.
 
 ## 8. Ethics & Safe use
 
@@ -123,7 +123,7 @@ Trước khi nộp, cần có:
 - `tests/` với ít nhất 5 test
 - có negative test cho `tamper` và `wrong key`
 - `logs/` có ít nhất 1 file minh chứng thật
-- không còn dòng `TODO_STUDENT`
+
 
 ## 10. Lưu ý về CI
 
@@ -132,7 +132,7 @@ CI sẽ **không chỉ kiểm tra file có tồn tại** mà còn kiểm tra:
 - các mục bắt buộc trong report
 - sự hiện diện của negative tests
 - có minh chứng trong `logs/`
-- repo **không còn placeholder `TODO_STUDENT`**
+
 
 Vì vậy repo starter này sẽ **chưa pass CI** cho tới khi sinh viên hoàn thiện nội dung.
 
@@ -150,7 +150,7 @@ Chọn mode:
 4 = TripleDES decrypt
 ```
 
-### Mode 1: DES encrypt 
+### Mode 1: DES encrypt
 Nhập lần lượt:
 1. `1`
 2. plaintext nhị phân
@@ -171,7 +171,7 @@ Yêu cầu:
 - giải mã DES theo round keys đảo ngược
 - in ra plaintext cuối cùng
 
-### Mode 3: TripleDES encrypt 
+### Mode 3: TripleDES encrypt
 Nhập lần lượt:
 1. `3`
 2. plaintext 64-bit
@@ -183,7 +183,7 @@ Yêu cầu:
 - thực hiện đúng chuỗi **E(K3, D(K2, E(K1, P)))**
 - in ra ciphertext cuối cùng
 
-### Mode 4: TripleDES decrypt 
+### Mode 4: TripleDES decrypt
 Nhập lần lượt:
 1. `4`
 2. ciphertext 64-bit
