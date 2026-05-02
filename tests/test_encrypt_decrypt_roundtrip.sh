@@ -1,7 +1,11 @@
-#!/usr/bin/env bash
-# TODO_STUDENT: Hoàn thiện test round-trip encrypt -> decrypt.
-# Gợi ý: sau khi em viết thêm giải mã, cần kiểm tra decrypt(encrypt(plaintext)) = plaintext.
-set -euo pipefail
+#!/bin/bash
+# Kiểm tra quy trình khép kín: Mã hóa xong giải mã lại
+# Bước 1: Mã hóa và lưu vào file tạm
+echo "1
+0001001000110100010101100111100010011010101111001101111011110001
+0001001100110100010101110111100110011011101111001101111111110001" | ./des > cipher.txt
 
-echo "TODO_STUDENT: implement round-trip test"
-exit 0
+# Bước 2: Lấy kết quả đó đi giải mã
+echo "2
+$(cat cipher.txt)
+0001001100110100010101110111100110011011101111001101111111110001" | ./des

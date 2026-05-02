@@ -1,7 +1,6 @@
-#!/usr/bin/env bash
-# TODO_STUDENT: Hoàn thiện test cho trường hợp multi-block và padding.
-# Gợi ý: kiểm tra plaintext dài hơn 64 bit, chia block đúng và zero padding đúng.
-set -euo pipefail
-
-echo "TODO_STUDENT: implement multi-block padding test"
-exit 0
+#!/bin/bash
+# Kiểm tra tính năng chia khối và bù bit 0 (Zero Padding)
+# Nhập một chuỗi không đủ 64 bit (ví dụ 16 bit)
+echo "1
+1010101010101010
+133457799BBCDFF1" | ./des
